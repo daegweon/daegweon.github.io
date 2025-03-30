@@ -1,5 +1,1 @@
-User-agent: *
-
-Disallow: /norobots/
-
 Sitemap: https://daegweon.github.io/sitemap.xml
