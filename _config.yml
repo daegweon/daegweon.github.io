@@ -1,3 +1,12 @@
-title: Auto Blog
-description: AI-generated blog posts daily.
-theme: minima
+title: AI Auto Blog with Chirpy
+description: Daily AI-generated content on trending topics.
+theme: jekyll-theme-chirpy
+lang: en
+timezone: Asia/Seoul
+
+markdown: kramdown
+highlighter: rouge
+
+baseurl: ""
+url: "https://daegweon.github.io"
+repository: daegweon/daegweon.github.io
