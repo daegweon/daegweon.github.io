@@ -111,6 +111,7 @@ def create_jekyll_post(title, topic, content, image_url, tags):
         f.write(f"""---
 title: {title}
 slug: {slug}
+permalink: /posts/{slug}/
 description: A helpful blog post about {topic}
 tags: [{', '.join(tags)}]
 date: {today}
