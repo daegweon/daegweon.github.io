@@ -110,6 +110,7 @@ def create_jekyll_post(title, topic, content, image_url, tags):
     with open(filename, "w", encoding="utf-8") as f:
         f.write(f"""---
 title: {title}
+slug: {slug}
 description: A helpful blog post about {topic}
 tags: [{', '.join(tags)}]
 date: {today}
