@@ -33,12 +33,12 @@ def get_trending_keyword():
 
 def generate_title(topic):
     prompt = f"""
-Write a click-worthy blog post title about "{topic}" that:
-- Sounds human and conversational
+Write a catchy and SEO-friendly blog post title about "{topic}" that:
+- Sounds human and engaging
 - Sparks curiosity or urgency
-- Includes numbers, power words, or emotion
+- Uses power words or emotional language
 - Stays under 60 characters
-Return just the title.
+Only return the title text without quotes or explanation.
 """
     res = client.chat.completions.create(
         model="gpt-3.5-turbo",
@@ -48,17 +48,25 @@ Return just the title.
 
 def generate_content_and_tags(topic):
     prompt = f"""
-Write a compelling and well-structured Markdown blog post about "{topic}" in English.
-Requirements:
-- Use a conversational and engaging tone
-- At least 1,000 words
-- Include 3 to 5 subheadings using ## style
-- Add practical examples and tips
-- Start with a powerful hook
-- End with a summary and a call-to-action
-At the end, return 3 to 5 SEO-friendly tags as a Python list.
+Write a detailed, high-quality blog post in Markdown format for GitHub Pages (Jekyll + Chirpy theme) about the topic: "{topic}".
 
-Format your response like:
+Requirements:
+- Use a human, conversational tone
+- Include a strong introduction with a hook
+- Add 3 to 5 main sections with `##` headings
+- For each section, include examples, lists, and tips
+- Use subheadings (`###`) when necessary for better structure
+- Include at least one blockquote or call-out note
+- Format lists with `-` or `1.`, and use code blocks or images if appropriate
+- End with a clear summary and a call-to-action (CTA)
+- Optimize headings for SEO with natural keywords
+- Total length should exceed 1000 words
+- Avoid generic fluff; be insightful and specific
+
+At the end, return 3 to 5 SEO-friendly tags as a valid Python list.
+
+Format your response like this:
+
 [CONTENT]
 <markdown content>
 [TAGS]
@@ -80,7 +88,7 @@ Format your response like:
 
 def generate_image(topic):
     res = client.images.generate(
-        prompt=f"A photorealistic thumbnail image about '{topic}', bright background, realistic and no text",
+        prompt=f"A high-quality, photorealistic blog thumbnail image about '{topic}', white background, professional style, no text",
         n=1,
         size="512x512"
     )
@@ -119,5 +127,5 @@ if __name__ == "__main__":
     title = generate_title(topic)
     content, tags = generate_content_and_tags(topic)
     image_url = generate_image(topic)
-    # content = insert_affiliate_link(topic, content)
+    #content = insert_affiliate_link(topic, content)
     create_jekyll_post(title, topic, content, image_url, tags)
