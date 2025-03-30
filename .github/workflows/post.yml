@@ -35,13 +35,13 @@ jobs:
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
-      
-          # ✅ remote URL에 PAT 삽입 (핵심)
+          
           git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/daegweon/daegweon.github.io.git
       
           git add _posts/
           git commit -m "🤖 Auto-post: $(date '+%Y-%m-%d %H:%M:%S')" || echo "No changes"
           git push origin main
+
 
 
 
