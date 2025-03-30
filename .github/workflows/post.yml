@@ -26,9 +26,6 @@ jobs:
           NEWS_API_KEY: ${{ secrets.NEWS_API_KEY }}
           COUPANG_PARTNER_ID: ${{ secrets.COUPANG_PARTNER_ID }}
 
-      - name: 🔍 Debug token
-        run: echo "GH_TOKEN is ${{ secrets.GH_TOKEN }}"
-
       - name: Commit and push with GITHUB_TOKEN
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -39,9 +36,3 @@ jobs:
           git add _posts/
           git commit -m "🤖 Auto-post: $(date '+%Y-%m-%d %H:%M:%S')" || echo "No changes"
           git push origin main
-
-
-
-
-
-
