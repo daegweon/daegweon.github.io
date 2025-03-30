@@ -29,15 +29,23 @@ jobs:
       - name: 🔍 Debug token
         run: echo "GH_TOKEN is ${{ secrets.GH_TOKEN }}"
 
-      - name: Commit and push
+      - name: Commit and push with PAT
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          git config --global user.email "actions@github.com"
           git config --global user.name "GitHub Actions"
-          git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}
+          git config --global user.email "actions@github.com"
+
+          # 깃 인증을 위한 Askpass 스크립트 생성
+          echo "echo ${GH_TOKEN}" > askpass.sh
+          chmod +x askpass.sh
+          export GIT_ASKPASS=$PWD/askpass.sh
+
+          # remote 설정
+          git remote set-url origin https://github.com/${{ github.repository }}
           git add _posts/
           git commit -m "🤖 Auto-post: $(date '+%Y-%m-%d %H:%M:%S')" || echo "No changes"
           git push origin main
+
 
 
