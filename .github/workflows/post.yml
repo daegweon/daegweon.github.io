@@ -29,18 +29,17 @@ jobs:
       - name: 🔍 Debug token
         run: echo "GH_TOKEN is ${{ secrets.GH_TOKEN }}"
 
-      - name: Commit and push with PAT
+      - name: Commit and push with GITHUB_TOKEN
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-          git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/daegweon/daegweon.github.io.git
-      
           git add _posts/
           git commit -m "🤖 Auto-post: $(date '+%Y-%m-%d %H:%M:%S')" || echo "No changes"
           git push origin main
+
 
 
 
