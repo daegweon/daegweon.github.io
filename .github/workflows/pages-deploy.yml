@@ -42,7 +42,10 @@ jobs:
           bundler-cache: true
 
       - name: 📦 Install Ruby Gems
-        run: bundle install
+        run: |
+          bundle config path vendor/bundle
+          bundle install
+          bundle lock --add-platform x86_64-linux
 
       - name: Build site
         run: bundle exec jekyll b -d "_site${{ steps.pages.outputs.base_path }}"
