@@ -109,10 +109,10 @@ def create_jekyll_post(title, topic, content, image_url, tags):
     seo_intro = f"**In this post, you'll learn about {topic} and why it matters in today's world.**\n\n"
     with open(filename, "w", encoding="utf-8") as f:
         f.write(f"""---
-title: {title}
+title: "{title}"
 slug: {slug}
 permalink: /posts/{slug}/
-description: A helpful blog post about {topic}
+description: "A helpful blog post about {topic}"
 tags: [{', '.join(tags)}]
 date: {today}
 layout: post
