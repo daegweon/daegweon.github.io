@@ -115,6 +115,7 @@ permalink: /posts/{slug}/
 description: A helpful blog post about {topic}
 tags: [{', '.join(tags)}]
 date: {today}
+layout: post
 ---
 
 ![Thumbnail]({image_url})
