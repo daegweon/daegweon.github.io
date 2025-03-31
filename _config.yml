@@ -1,11 +1,11 @@
 # The Site Configuration
 
-theme: jekyll-theme-chirpy
+remote_theme: cotes2020/jekyll-theme-chirpy
 lang: en
 timezone: Asia/Seoul
 
-title: Daily Digest: News You Can Trust
-tagline: Curated headlines and stories from around you
+title: "Daily Digest: News You Can Trust"
+tagline: "Curated headlines and stories from around you"
 description: >-
   Catch up on the latest stories from the world, society, culture, and everyday life. Updated daily.
 
@@ -45,7 +45,7 @@ social_preview_image: # optional
 toc: true
 
 comments:
-  provider:
+  provider: utterances
   utterances:
     repo: daegweon/daegweon.github.io
     issue_term:
